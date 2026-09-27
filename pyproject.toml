@@ -1,0 +1,20 @@
+[project]
+name = "captcha-demo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "skl-814", email = "skl2007814@163.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "captcha>=0.7.1",
+    "dotenv>=0.9.9",
+    "flask>=3.1.3",
+]
+
+#[project.scripts]
+#captcha-demo = "app:create_app"
+#[build-system]
+#requires = ["uv_build>=0.12.15,<0.13.0"]
+#build-backend = "uv_build"

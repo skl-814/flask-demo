@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title>{% block title %}{% endblock %}</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.17.4/cdn.min.js" integrity="sha512-0uiINGF9MyHX98bXW20KT16/3dWnjrR2fekh9iKYcNpuAXlgAIPoIB2t7HG4yUlukHX+oqd6mewlV65FzdqU9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  {% block extra_head %}{% endblock %}
+</head>
+
+<nav>
+{% block navbar %}
+<ol>
+<li><a href="/">Home</a>
+<li><a href="/login">Sign in </a></li>
+</ol>
+{% endblock %}
+</nav>
+<body>
+
+{% block body %}{% endblock %}
+
+
+<footer>
+{% block footer %}
+
+  <p>2026 skl - all right reserved</p>
+{% block extra_footer %}{% endblock %}
+
+{% endblock %}
+</footer>
+</body>
+
+
+</html>
+
