@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<main class="pico container">
+    <header>
+        <h1>signup</h1>
+        <button @click="dark != dark" x-text="dark ? 'Light' : 'Dark'"></button>
+    </header>
+    <form method="post">
+        <label>user name</label>
+        <input type="text" id="user_name" name="user_name">
+
+        <label>password</label>
+        <input type="password" id="user_password" name="user_password">
+
+        <button type="submit" >signup</button>
+
+    </form>
+
+</main>
+
+{% endblock %}
+

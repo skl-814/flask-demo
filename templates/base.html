@@ -1,22 +1,35 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.17.4/cdn.min.js" integrity="sha512-0uiINGF9MyHX98bXW20KT16/3dWnjrR2fekh9iKYcNpuAXlgAIPoIB2t7HG4yUlukHX+oqd6mewlV65FzdqU9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- pico.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/2.1.1/pico.fluid.classless.min.css" integrity="sha512-mKXihnuje9MxC+c8+5F72k53fWNrKnTdMaC1i1RPbGNzixNz8o6ZTLsp3fd6ssgnETzy2rcF7HWyrVRLXL1uUw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  <style>
+    [x-cloak] {display: none !important; }
+  </style>
+  <!-- alpine.js -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.17.4/cdn.min.js" integrity="sha512-0uiINGF9MyHX98bXW20KT16/3dWnjrR2fekh9iKYcNpuAXlgAIPoIB2t7HG4yUlukHX+oqd6mewlV65FzdqU9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
   {% block extra_head %}{% endblock %}
 </head>
 
-<nav>
+
+<body x-data="{ dark : false }" x-effect="document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')">
+
+  <nav>
 {% block navbar %}
 <ol>
 <li><a href="/">Home</a>
-<li><a href="/login">Sign in </a></li>
+<li><a href="/signin">Sign in </a></li>
+<li><button @click="dark = !dark" x-text="dark ? 'Light' : 'Dark'"></button></li>
 </ol>
 {% endblock %}
 </nav>
-<body>
+
 
 {% block body %}{% endblock %}
 

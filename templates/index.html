@@ -3,8 +3,55 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<main>
-<p>hello</p>
+<main class="pico container">
+    <header>
+        <h1>hello</h1>
+        <p>this is a test flask website. the frontend is pico.css + alpine.js</p>
+    </header>
+
+    <section id="alpine-counter" x-data="{ count : 0 }">
+        <header>Counter</header>
+        <p>counter: <strong x-text="count"></strong></p>
+
+        <button @click="count++">+</button>
+        <button @click="count--" :disabled="count === 0">-</button>
+        <button @click="count=0" class="secondary">reset</button>
+    </section>
+
+    <section id="todo-list" x-data="{
+    newTodo: '',
+    todos: [],
+    add() {
+    const text = this.newTodo.trim();
+    if (!text) {
+    return;
+    }
+    this.todos.push({ text, done: false });
+    this.newTodo = '';
+    }
+    }">
+        <header>Todo</header>
+        <form @submit.prevent="add">
+            <input type="text" x-model="newTodo" placeholder="new task..." aria-label="New Task">
+            <button type="submit">Add</button>
+        </form>
+
+        <ul>
+            <template x-for="(todo, index) in todos" :key="index">
+                <li>
+                    <label>
+                        <input type="checkbox" x-model="todo.done">
+                        <span :style="todo.done ? 'text-decoration: line-through; opacity: 0.6 : ''" x-text="todo.text"></span>
+                    </label>
+                    <button class="outline secondary" @click="todos.splice(index, 1)">Delete</button>
+                </li>
+            </template>
+        </ul>
+        <p x-show="todos.length === 0" x-cloak>No Todos yet.</p>
+    </section>
+
+    
+
 </main>
 
 {% endblock %}
